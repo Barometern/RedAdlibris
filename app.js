@@ -106,13 +106,17 @@ function stop() {
 }
 
 /* ---------- tyst alarm ---------- */
+/* långa hårda skakningar med minimala pauser – ska inte gå att sova igenom */
+const PATTERN = [1500, 90, 1500, 90, 1500, 90, 900, 70, 900, 70, 900, 70, 2500, 120];
+const PULSE = PATTERN.reduce((a, b) => a + b, 0);
+
 function fire() {
   if (!$('alarm').hidden) return;
   stop();
   $('alarm').hidden = false;
-  const buzz = () => navigator.vibrate?.([400, 200, 400, 200, 400, 800]);
+  const buzz = () => navigator.vibrate?.(PATTERN);
   buzz();
-  buzzer = setInterval(buzz, 2400);
+  buzzer = setInterval(buzz, PULSE - 100); // överlappa så det aldrig tystnar
 }
 
 $('dismiss').onclick = () => {

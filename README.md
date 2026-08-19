@@ -29,7 +29,9 @@ Destinationen sparas i `localStorage`, så den finns kvar efter omladdning.
   övrigt sker helt lokalt i webbläsaren — ingen position lämnar enheten.
 - Skärmen hålls vaken med Wake Lock API under bevakning. Håll fliken öppen —
   webbläsare stryper positionsuppdateringar i bakgrunden.
-- Vibration kräver Android/Chrome; på iOS blir alarmet enbart visuellt.
+- Vibrationen är avsiktligt påträngande: ~10 sekunder skakning per varv med bara
+  korta pauser, i loop tills du trycker "Stäng av". Kräver Android/Chrome;
+  på iOS blir alarmet enbart visuellt.
 
 ## Filer
 
