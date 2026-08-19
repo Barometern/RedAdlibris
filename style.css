@@ -26,3 +26,6 @@ li:hover, li:focus { background:#222b36; outline:none; }
 #alarm button { background:#fff; color:#0e1116; font-size:1.1rem; padding:.9rem 2rem; }
 @keyframes flash { 50% { background:#0e1116; color:var(--acc); } }
 @media (prefers-reduced-motion: reduce) { #alarm { animation:none; } }
+
+/* måste renderas för att ge haptik – därför osynlig, inte display:none */
+#haptic { position:fixed; bottom:0; left:0; width:1px; height:1px; opacity:0; pointer-events:none; }

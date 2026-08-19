@@ -47,6 +47,10 @@
   </section>
 </main>
 
+<!-- iOS saknar Vibration API. Enda kända vägen till haptik är att toggla en
+     switch-kontroll (iOS 17.4+), så den ligger här och togglas av alarmet. -->
+<input id="haptic" type="checkbox" switch aria-hidden="true" tabindex="-1">
+
 <div id="alarm" hidden>
   <p>FRAMME</p>
   <button id="dismiss">Stäng av</button>

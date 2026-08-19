@@ -30,8 +30,11 @@ Destinationen sparas i `localStorage`, så den finns kvar efter omladdning.
 - Skärmen hålls vaken med Wake Lock API under bevakning. Håll fliken öppen —
   webbläsare stryper positionsuppdateringar i bakgrunden.
 - Vibrationen är avsiktligt påträngande: ~10 sekunder skakning per varv med bara
-  korta pauser, i loop tills du trycker "Stäng av". Kräver Android/Chrome;
-  på iOS blir alarmet enbart visuellt.
+  korta pauser, i loop tills du trycker "Stäng av".
+- iOS saknar Vibration API (`navigator.vibrate` finns inte i WebKit). Som fallback
+  togglas en dold switch-kontroll ~4 ggr/sek, vilket ger haptisk respons i
+  iOS 17.4+. Otestat på riktig hårdvara och beroende av odokumenterat beteende —
+  den blinkande skärmen är garantin, haptiken en bonus.
 
 ## Filer
 

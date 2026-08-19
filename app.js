@@ -114,14 +114,22 @@ function fire() {
   if (!$('alarm').hidden) return;
   stop();
   $('alarm').hidden = false;
-  const buzz = () => navigator.vibrate?.(PATTERN);
-  buzz();
-  buzzer = setInterval(buzz, PULSE - 100); // överlappa så det aldrig tystnar
+
+  if (navigator.vibrate) {                     // Android m.fl.
+    const buzz = () => navigator.vibrate(PATTERN);
+    buzz();
+    buzzer = setInterval(buzz, PULSE - 100);   // överlappa så det aldrig tystnar
+  } else {                                     // iOS: toggla switchen för haptik
+    const tick = () => $('haptic').click();
+    tick();
+    buzzer = setInterval(tick, 220);
+  }
 }
 
 $('dismiss').onclick = () => {
   clearInterval(buzzer);
   navigator.vibrate?.(0);
+  $('haptic').checked = false;
   $('alarm').hidden = true;
 };
 
