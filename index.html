@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0e1116">
+<title>Tyst Alarm</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="app">
+  <h1>Tyst Alarm</h1>
+
+  <section class="card">
+    <h2>1. Din position</h2>
+    <p id="pos" class="muted">Väntar på position…</p>
+    <button id="locate">Hämta min position</button>
+  </section>
+
+  <section class="card">
+    <h2>2. Destination</h2>
+    <form id="searchForm">
+      <input id="q" type="search" placeholder="Sök adress eller plats" autocomplete="off">
+      <button type="submit">Sök</button>
+    </form>
+    <ul id="results"></ul>
+    <p id="dest" class="muted">Ingen destination vald.</p>
+    <label>Larma inom
+      <select id="radius">
+        <option value="100">100 m</option>
+        <option value="250">250 m</option>
+        <option value="500" selected>500 m</option>
+        <option value="1000">1 km</option>
+        <option value="2000">2 km</option>
+      </select>
+    </label>
+  </section>
+
+  <section class="card">
+    <h2>3. Bevakning</h2>
+    <p id="dist" class="big">–</p>
+    <button id="start" disabled>Starta bevakning</button>
+    <button id="stop" class="ghost" hidden>Stoppa</button>
+    <p class="muted small">Tyst alarm = vibration + blinkande skärm. Inget ljud. Håll fliken öppen.</p>
+  </section>
+</main>
+
+<div id="alarm" hidden>
+  <p>FRAMME</p>
+  <button id="dismiss">Stäng av</button>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
